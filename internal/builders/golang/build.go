@@ -55,9 +55,6 @@ func (*Builder) WithDefaults(build config.Build) config.Build {
 
 // Build builds a golang build
 func (*Builder) Build(ctx *context.Context, build config.Build, options api.Options) error {
-	if err := checkMain(ctx, build); err != nil {
-		return err
-	}
 	cmd := []string{"go", "build"}
 	if build.Flags != "" {
 		cmd = append(cmd, strings.Fields(build.Flags)...)
